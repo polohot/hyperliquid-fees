@@ -1,0 +1,20 @@
+# Secrets — NEVER commit (.mcp.json contains the Tavily API key)
+.mcp.json
+
+# Node
+node_modules/
+
+# Generated screenshots (regenerable via tools/screenshot.js)
+tools/*.png
+
+# OS / editor cruft
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Claude Code local config (not part of the site)
+.claude/
+
+# Windows mark-of-the-web artifacts (WSL)
+*:Zone.Identifier

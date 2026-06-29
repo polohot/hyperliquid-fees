@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get 4% Off Hyperliquid Fees — Referral Link</title>
+<meta name="description" content="Trade perps on Hyperliquid with 4% off your fees. Self-custody, CEX-grade speed, lower fees than Binance. Discount auto-applied at signup — no KYC.">
+<style>
+  :root {
+    --bg0: #070b14;
+    --bg1: #0e1424;
+    --surface: rgba(255,255,255,0.045);
+    --surface-strong: rgba(255,255,255,0.07);
+    --border: rgba(255,255,255,0.10);
+    --text: #e8edf5;
+    --muted: #93a0b5;
+    --accent: #2ee6a6;      /* Hyperliquid-ish green */
+    --accent-ink: #04231a;
+    --blue: #4c8dff;
+    --amber: #fbbf24;
+    --danger: #f87171;
+    --maxw: 1080px;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(900px 500px at 80% -10%, rgba(46,230,166,0.10), transparent 60%),
+      radial-gradient(700px 500px at 0% 0%, rgba(76,141,255,0.10), transparent 55%),
+      linear-gradient(180deg, var(--bg0), var(--bg1));
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+  /* ---------- Header ---------- */
+  header.top {
+    position: sticky; top: 0; z-index: 10;
+    backdrop-filter: blur(10px);
+    background: rgba(7,11,20,0.72);
+    border-bottom: 1px solid var(--border);
+  }
+  .top .row { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: 0.2px; }
+  .brand .dot { width: 14px; height: 14px; border-radius: 4px; background: linear-gradient(135deg, var(--accent), var(--blue)); box-shadow: 0 0 16px rgba(46,230,166,0.5); }
+  .brand small { color: var(--muted); font-weight: 500; }
+  .top .right { display: flex; align-items: center; gap: 22px; }
+  .top nav a { color: var(--muted); text-decoration: none; margin-left: 18px; font-size: 14px; }
+  .top nav a:first-child { margin-left: 0; }
+  .top nav a:hover { color: var(--text); }
+  .top-cta { padding: 9px 18px; font-size: 14px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 64px 0 40px; text-align: center; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(46,230,166,0.10); color: var(--accent);
+    border: 1px solid rgba(46,230,166,0.30);
+    padding: 6px 14px; border-radius: 999px; font-size: 13px; font-weight: 600;
+    letter-spacing: 0.4px;
+  }
+  h1 { font-size: clamp(30px, 6vw, 50px); line-height: 1.1; margin: 20px 0 14px; font-weight: 800; letter-spacing: -0.5px; }
+  h1 .hl { background: linear-gradient(90deg, var(--accent), var(--blue)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .sub { color: var(--muted); font-size: clamp(16px, 2.4vw, 19px); max-width: 640px; margin: 0 auto 28px; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(180deg, #34f0b4, #1fc98c);
+    color: var(--accent-ink);
+    font-weight: 800; font-size: 17px;
+    padding: 16px 30px; border-radius: 12px;
+    text-decoration: none;
+    box-shadow: 0 10px 30px rgba(46,230,166,0.30), inset 0 1px 0 rgba(255,255,255,0.4);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .cta:hover { transform: translateY(-1px); box-shadow: 0 14px 38px rgba(46,230,166,0.40); }
+  .micro { color: var(--muted); font-size: 13px; margin-top: 12px; }
+  .micro b { color: var(--text); font-weight: 600; }
+
+  /* ---------- Stats strip ---------- */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 44px 0 8px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 14px; text-align: center; }
+  .stat .n { font-size: 22px; font-weight: 800; }
+  .stat .l { color: var(--muted); font-size: 12.5px; margin-top: 4px; }
+
+  /* ---------- Sections ---------- */
+  section.block { padding: 56px 0; border-top: 1px solid var(--border); }
+  .eyebrow { color: var(--accent); font-size: 13px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  h2 { font-size: clamp(24px, 4vw, 34px); margin: 8px 0 10px; font-weight: 800; letter-spacing: -0.3px; }
+  .lead { color: var(--muted); max-width: 640px; margin: 0 0 30px; font-size: 17px; }
+
+  .grid { display: grid; gap: 16px; }
+  .cards-3 { grid-template-columns: repeat(3, 1fr); }
+  .cards-2 { grid-template-columns: repeat(2, 1fr); }
+  .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
+  .card .ico { width: 38px; height: 38px; border-radius: 10px; display: grid; place-items: center; font-size: 20px; background: var(--surface-strong); border: 1px solid var(--border); margin-bottom: 12px; }
+  .card h3 { margin: 0 0 6px; font-size: 17px; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+  /* ---------- Steps ---------- */
+  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; counter-reset: step; }
+  .step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; position: relative; }
+  .step .num { counter-increment: step; width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--blue)); color: #042116; font-weight: 800; display: grid; place-items: center; margin-bottom: 12px; }
+  .step .num::before { content: counter(step); }
+  .step h3 { margin: 0 0 6px; font-size: 16px; }
+  .step p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+  /* ---------- Savings callout ---------- */
+  .callout {
+    background: linear-gradient(135deg, rgba(46,230,166,0.10), rgba(76,141,255,0.10));
+    border: 1px solid rgba(46,230,166,0.25);
+    border-radius: 18px; padding: 28px; text-align: center; margin-top: 8px;
+  }
+  .callout h3 { margin: 0 0 8px; font-size: 22px; }
+  .callout p { margin: 0 auto; color: var(--muted); max-width: 560px; }
+  .callout .stacks { color: var(--accent); font-weight: 700; }
+
+  /* ---------- Comparison ---------- */
+  .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table.cmp { width: 100%; min-width: 560px; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; font-size: 15px; }
+  table.cmp th, table.cmp td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--border); }
+  table.cmp thead th { background: var(--surface-strong); font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  table.cmp td.hl { color: var(--accent); font-weight: 700; }
+  table.cmp tr:last-child td { border-bottom: none; }
+  .yes { color: var(--accent); font-weight: 700; }
+  .no { color: var(--danger); }
+
+  /* ---------- FAQ ---------- */
+  .faq { max-width: 760px; }
+  details.q { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; margin-bottom: 10px; }
+  details.q summary { cursor: pointer; font-weight: 600; list-style: none; }
+  details.q summary::-webkit-details-marker { display: none; }
+  details.q summary::before { content: "+"; display: inline-block; width: 18px; color: var(--accent); font-weight: 800; }
+  details.q[open] summary::before { content: "–"; }
+  details.q p { margin: 10px 0 0; color: var(--muted); font-size: 15px; }
+
+  /* ---------- Final CTA ---------- */
+  .final { text-align: center; padding: 64px 0; }
+  .final h2 { margin-bottom: 16px; }
+  .disclosure { color: var(--muted); font-size: 13px; max-width: 620px; margin: 16px auto 0; }
+
+  /* ---------- Footer ---------- */
+  footer { border-top: 1px solid var(--border); padding: 28px 0; color: var(--muted); font-size: 13px; }
+  footer .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  footer a { color: var(--muted); }
+  footer a:hover { color: var(--text); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 820px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .cards-3, .steps { grid-template-columns: 1fr; }
+    .cards-2 { grid-template-columns: 1fr; }
+    .top nav { display: none; }
+    .top-cta { display: inline-flex; }
+  }
+  @media (max-width: 480px) {
+    .stat .n { font-size: 19px; }
+    .hero { padding: 44px 0 30px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap row">
+    <div class="brand"><span class="dot"></span> HyperliquidFeeSaver <small>· referral</small></div>
+    <div class="right">
+      <nav>
+        <a href="#why">Why Hyperliquid</a>
+        <a href="#how">How it works</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="cta top-cta" data-cta>Get 4% off →</a>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero wrap">
+  <span class="pill">⚡ 4% off Hyperliquid trading fees</span>
+  <h1>Trade perps on Hyperliquid —<br>with <span class="hl">4% off your fees</span></h1>
+  <p class="sub">Self-custody. CEX-grade speed. Lower fees than Binance. Use this referral link and your fee discount is <b style="color:var(--text)">auto-applied at signup</b> — on your first $25M of volume.</p>
+  <a class="cta" data-cta target="_blank" rel="noopener">Claim my 4% discount →</a>
+  <p class="micro"><b>No KYC</b> · <b>Free</b> · Discount applied automatically · Stacks with HYPE staking</p>
+
+  <div class="stats">
+    <div class="stat"><div class="n">~70–80%</div><div class="l">of on-chain perp volume</div></div>
+    <div class="stat"><div class="n">~$8.97B</div><div class="l">open interest</div></div>
+    <div class="stat"><div class="n">0.045%</div><div class="l">taker fee (beats Binance)</div></div>
+    <div class="stat"><div class="n">&lt;1s</div><div class="l">order finality</div></div>
+  </div>
+</section>
+
+<!-- ================= WHY ================= -->
+<section class="block" id="why">
+  <div class="wrap">
+    <div class="eyebrow">Why Hyperliquid</div>
+    <h2>CEX-grade trading, without the CEX risk</h2>
+    <p class="lead">Hyperliquid is the dominant on-chain perpetuals exchange — built on its own L1 for speed, with a fully on-chain order book. Here's why traders are switching from Binance, Bybit, and Coinbase.</p>
+
+    <div class="grid cards-3">
+      <div class="card">
+        <div class="ico">🔑</div>
+        <h3>Self-custody</h3>
+        <p>Your funds stay in your wallet. The platform can't freeze your account or block withdrawals — the exchange-custody risk that sank FTX doesn't exist here.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🚫</div>
+        <h3>No KYC</h3>
+        <p>Trade with just a wallet. No identity verification, no account restrictions during volatile periods, no frozen funds for "review."</p>
+      </div>
+      <div class="card">
+        <div class="ico">🔍</div>
+        <h3>On-chain transparency</h3>
+        <p>Every order, fill, and liquidation is on-chain and auditable. No internal market-making desk front-running you, no suspicious liquidation wicks.</p>
+      </div>
+      <div class="card">
+        <div class="ico">💨</div>
+        <h3>CEX-grade speed</h3>
+        <p>Sub-second finality, up to 200,000 orders/sec, and full pro order types — limit, stop-loss, take-profit, trailing, TWAP. One-click trading.</p>
+      </div>
+      <div class="card">
+        <div class="ico">💸</div>
+        <h3>Lower fees</h3>
+        <p>0.045% taker / 0.015% maker — cheaper than Binance's 0.05% taker. $0 to place or cancel orders, and a flat 1 USDC withdrawal.</p>
+      </div>
+      <div class="card">
+        <div class="ico">🌊</div>
+        <h3>Deepest on-chain liquidity</h3>
+        <p>Roughly 70–80% of all on-chain perp volume. On majors, order-book depth now rivals centralized exchanges — tight spreads, minimal slippage.</p>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top:24px;">
+      <h3>And the 4% discount stacks</h3>
+      <p>This referral gives you <span class="stacks">4% off fees on your first $25M</span> of volume. It also stacks with <b style="color:var(--text)">HYPE staking discounts</b> (5–40%), for up to ~42% off — on top of already-low base fees.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HOW ================= -->
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="eyebrow">How it works</div>
+    <h2>Get your discount in 30 seconds</h2>
+    <p class="lead">The referral is built into the link — your 4% discount applies automatically when you sign up. Nothing to type, no code to remember.</p>
+
+    <div class="steps">
+      <div class="step">
+        <div class="num"></div>
+        <h3>Click the button</h3>
+        <p>Hit "Claim my 4% discount" — it takes you straight to Hyperliquid with the referral already attached.</p>
+      </div>
+      <div class="step">
+        <div class="num"></div>
+        <h3>Connect a wallet</h3>
+        <p>Connect any EVM or Solana wallet, or sign up with email. No KYC required. Deposit from 30+ chains.</p>
+      </div>
+      <div class="step">
+        <div class="num"></div>
+        <h3>Start trading</h3>
+        <p>Trade perps as normal. The 4% fee discount is active from your very first trade — for your first $25M of volume.</p>
+      </div>
+    </div>
+    <p style="text-align:center; margin-top:24px;"><a class="cta" data-cta target="_blank" rel="noopener">Claim my 4% discount →</a></p>
+  </div>
+</section>
+
+<!-- ================= COMPARE ================= -->
+<section class="block">
+  <div class="wrap">
+    <div class="eyebrow">Hyperliquid vs the rest</div>
+    <h2>How it compares</h2>
+    <p class="lead">A quick, honest comparison against the platforms most traders are coming from.</p>
+    <div class="table-scroll">
+    <table class="cmp">
+      <thead>
+        <tr><th>Feature</th><th>Hyperliquid</th><th>Binance / Bybit</th><th>Other perp DEXs</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Self-custody</td><td class="hl">Yes</td><td class="no">No</td><td>Yes</td></tr>
+        <tr><td>No KYC</td><td class="hl">Yes</td><td class="no">No</td><td>Mostly</td></tr>
+        <tr><td>Taker fee (base)</td><td class="hl">0.045%</td><td>0.05%+</td><td>0.04–0.05%</td></tr>
+        <tr><td>Gas to place/cancel orders</td><td class="hl">$0</td><td>$0</td><td>Often yes</td></tr>
+        <tr><td>Order book (not AMM)</td><td class="hl">Yes</td><td class="hl">Yes</td><td>Often AMM</td></tr>
+        <tr><td>On-chain auditable fills</td><td class="hl">Yes</td><td class="no">No</td><td>Varies</td></tr>
+        <tr><td>Liquidity / depth</td><td class="hl">Deepest on-chain</td><td>Deepest overall</td><td>Thinner</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">FAQ</div>
+    <h2>Questions, answered</h2>
+    <div class="faq">
+      <details class="q" open>
+        <summary>Is this safe?</summary>
+        <p>Hyperliquid is non-custodial — your funds stay in your own wallet, so the platform can't run off with them the way FTX did. As with any crypto trading, perps carry liquidation risk; only trade what you can afford to lose.</p>
+      </details>
+      <details class="q">
+        <summary>Do I need to KYC / verify my identity?</summary>
+        <p>No. You can trade with just a wallet connection (or an email). There's no identity verification and no account restrictions.</p>
+      </details>
+      <details class="q">
+        <summary>How much do I actually save?</summary>
+        <p>You get 4% off trading fees for your first $25M of volume. On $1M of taker volume that's roughly $1.80 saved directly on fees — and it stacks with HYPE staking discounts (5–40%) for much more.</p>
+      </details>
+      <details class="q">
+        <summary>Does using this referral cost me anything?</summary>
+        <p>No. It only reduces your fees — it never adds to them. The referrer (me) earns a small share of fees paid by Hyperliquid, not by you, so there's zero downside to using the link.</p>
+      </details>
+      <details class="q">
+        <summary>I already have a Hyperliquid account — can I still use it?</summary>
+        <p>Referrals can't be applied retroactively; the discount only attaches when you sign up through the link. If you already have an account, you'd need to use a new wallet to claim it.</p>
+      </details>
+      <details class="q">
+        <summary>Is this financial advice?</summary>
+        <p>No. This is an informational referral page, not financial advice. Crypto derivatives are high-risk. Do your own research.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final wrap">
+  <h2>Ready for 4% off?</h2>
+  <a class="cta" data-cta target="_blank" rel="noopener">Claim my 4% discount →</a>
+  <p class="disclosure"><b>Disclosure:</b> This is a Hyperliquid referral link. If you sign up through it, I may earn a share of trading fees — paid by Hyperliquid, at no extra cost to you. Not financial advice. Crypto trading carries significant risk.</p>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div>HyperliquidFeeSaver · Independent referral page. Not affiliated with or endorsed by Hyperliquid.</div>
+    <div><a href="https://hyperliquid.gitbook.io/hyperliquid-docs/referrals" target="_blank" rel="noopener">Official referral docs ↗</a></div>
+  </div>
+</footer>
+
+<script>
+  // === Swap this one line with your real code once you've cleared $10k volume ===
+  const REFERRAL_URL = "https://app.hyperliquid.xyz/join/YOURCODE";
+  document.querySelectorAll('[data-cta]').forEach(function (a) {
+    a.setAttribute('href', REFERRAL_URL);
+    a.setAttribute('target', '_blank');
+    a.setAttribute('rel', 'noopener');
+  });
+</script>
+</body>
+</html>
