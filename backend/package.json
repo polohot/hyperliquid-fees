@@ -1,0 +1,20 @@
+{
+  "name": "hl-leaderboard-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Hyperliquid trader-leaderboard backend: metrics engine, Hydromancer backfill, referral-gated API",
+  "scripts": {
+    "profile": "node --env-file=../.env src/cli.js",
+    "backfill": "node --env-file=../.env src/backfill.js",
+    "aws-check": "node --env-file=../.env src/aws-check.js",
+    "s3-explore": "node --env-file=../.env src/s3-explore.js",
+    "sanity": "node --env-file=../.env src/sanity.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1077.0",
+    "@aws-sdk/client-sts": "^3.1077.0",
+    "better-sqlite3": "^12.11.1",
+    "hyparquet": "^1.26.1"
+  }
+}

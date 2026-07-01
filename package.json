@@ -2,7 +2,7 @@
   "name": "adrian-hyperliquid-referral",
   "version": "1.0.0",
   "private": true,
-  "description": "Landing page + tooling to drive Hyperliquid referral signups",
+  "description": "Hyperliquid referral project — landing page (docs/) + visual tooling. Analytics backend in ./backend. See README.md",
   "scripts": {
     "shot": "node tools/screenshot.js"
   },

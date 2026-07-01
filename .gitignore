@@ -1,11 +1,20 @@
-# Secrets — NEVER commit (.mcp.json contains the Tavily API key)
+# Secrets — NEVER commit (.mcp.json = Tavily key; .env = Nansen key + others)
 .mcp.json
+.env
+.env.*
+!.env.example
 
 # Node
 node_modules/
 
+# Backend derived data (regenerable via backfill — do NOT commit)
+backend/data/
+
 # Generated screenshots (regenerable via tools/screenshot.js)
 tools/*.png
+
+# Sortino scan artifacts (regenerable; *.log already covered above)
+tools/sortino-results.json
 
 # OS / editor cruft
 .DS_Store
