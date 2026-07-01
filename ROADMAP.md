@@ -12,7 +12,7 @@ Drive signups to the Hyperliquid referral link **HYPEANLY** (referrer earns ~10%
   - Per-account fills (`userFillsByTime`, forward-paginated) — full trade history.
   - Hydromancer Reservoir S3 (requester-pays) — per-account **daily** equity + daily raw fills, ~11 months (2025-07-29 → now). AWS creds set up & verified.
 - **Metrics validated:** snapshot ✅ · fills-based (win rate, profit factor, payoff, expectancy, holding period, maker/taker, per-coin PnL, edge t-stat) ✅ · risk-adjusted (Sharpe/Sortino/Calmar) ✅ via daily equity.
-- **Backend scaffolded** (`backend/`): `metrics.js`, `hyperliquid.js`, `cli.js` (profile any account), `backfill.js` (Hydromancer → derived SQLite, process-and-discard, multi-dex SUM) — validated on 10 days.
+- **Backend built** (`backend/`): metrics engine + Hyperliquid fetcher + account profiler. **Hydromancer backfill DONE** (284 days → ~6.2M equity rows, 896 MB derived SQLite, process-and-discard, multi-dex SUM). **Clean-metrics pipeline** (deposit-stripped + validated quality gates) built.
 - **Research:** 16 traffic tactics ranked · metric catalog (~30 metrics, bait/full tiering) · competitive landscape (risk-metrics = whitespace; referral-gating unique).
 
 ### 🏗 Architecture (decided)
@@ -24,11 +24,14 @@ Drive signups to the Hyperliquid referral link **HYPEANLY** (referrer earns ~10%
 - **Rejected:** self-hosted node ($50–500/mo, doesn't solve API caps); Nansen (free endpoint is better).
 
 ## 🟧 Next (build order)
-1. **Full equity backfill** — 120d (laptop-feasible) or 284d (server) → real risk ratios for all 40k. *(validated, ready to run)*
-2. **Clean Sharpe/Sortino layer** — daily trading-PnL from fills (`realized_pnl`, deposit-free), paired with equity for MaxDD.
+1. ~~Full equity backfill~~ ✅ **DONE** (284 days). **Clean-metrics batch** (deposit-stripped risk ratios for ~39k accounts) — *running* → risk-adjusted leaderboard ranking.
+2. ~~Clean Sharpe/Sortino layer~~ ✅ **DONE** (ledger deposit-stripping + validation gates; the accuracy moat vs Hyperdash).
 3. **Backend API server** — serve leaderboard + profile + metrics; bait/full gating stub. (#18)
 4. **Frontend leaderboard tool page.** (#17)
 5. **JSON-LD / SEO schema** for the site. (#13, low-effort, anytime)
+
+## 🔮 Future (beyond v1)
+- **Copy-trade service** — non-custodial, agent-based (WebSocket → `/exchange`); copy traders by **Sortino**, not raw PnL. ⚠️ **REGULATORY-gated** (copy-trading = regulated portfolio management: SEC/CFTC, MiFID/MiCA, FCA; full compliance ≈ $50–200K+). ~3–4mo MVP; needs **securities counsel + jurisdiction strategy before building**. See `research/2026-07-01 copy-trade-design.md`.
 
 ## 🟦 Parallel / open (user)
 - Spot-check competitors (HyperTracker / ASXN) — confirm risk-metrics whitespace.

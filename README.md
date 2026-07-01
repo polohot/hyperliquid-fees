@@ -35,6 +35,8 @@ cp ../.env.example ../.env     # then fill in AWS creds + referral link
 | `npm run aws-check` | Verify AWS creds + Hydromancer bucket access |
 | `npm run s3-explore` | Map the Hydromancer archive structure |
 | `npm run sanity` | Pull one parquet, confirm schema + multi-dex SUM |
+| `npm run clean -- [N]` | Batch deposit-stripped, validated risk ratios → `clean_metrics` (vault/gate-filtered). `N=0` = all |
+| `npm run clean-one -- [addr]` | Clean Sortino/Sharpe for one account — raw (contaminated) vs clean |
 
 ## Data sources (all free)
 | Source | What | Endpoint |

@@ -62,3 +62,25 @@ export async function fetchEquity(addr) {
   if (!el || !el[1] || !Array.isArray(el[1].accountValueHistory)) return [];
   return el[1].accountValueHistory.map(([t, v]) => ({ t: +t, v: +v })).filter(p => p.v > 0).sort((a, b) => a.t - b.t);
 }
+
+const num = s => { const v = +s; return isFinite(v) ? v : 0; };
+
+/** Signed impact of a ledger delta on total account value (external capital flow). */
+export function signedFlow(d, self) {
+  switch (d && d.type) {
+    case 'deposit': return num(d.usdc);
+    case 'withdraw': return -num(d.usdc);
+    case 'vaultDeposit': return -num(d.usdc);
+    case 'vaultWithdraw': return num(d.netWithdrawnUsd != null ? d.netWithdrawnUsd : d.usdc);
+    case 'send': return (d.destination && d.destination.toLowerCase() === self) ? 0 : -num(d.usdcValue != null ? d.usdcValue : d.amount);
+    default: return 0; // accountClassTransfer/spotTransfer/spotGenesis/cStakingTransfer/vaultCreate = internal
+  }
+}
+
+/** Non-funding ledger updates (deposits/withdrawals/transfers) as signed flows [{t,type,flow}]. */
+export async function fetchLedger(addr, startMs) {
+  const { body } = await postInfo({ type: 'userNonFundingLedgerUpdates', user: addr, startTime: startMs });
+  if (!Array.isArray(body)) return [];
+  const self = addr.toLowerCase();
+  return body.map(x => ({ t: +x.time, type: x.delta && x.delta.type, flow: signedFlow(x.delta, self) }));
+}

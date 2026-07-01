@@ -98,3 +98,26 @@ export function seriesRiskMetrics(series) {
     annVolPct: +(sd * ann * 100).toFixed(1),
   };
 }
+
+/** Deposit-stripped ("clean") metrics from a daily equity series + ledger flows.
+ *  equity: [{date:'YYYY-MM-DD', eq}] asc.  ledger: [{t(ms), flow}] signed capital flows.
+ *  clean_pnl(d) = Δeq(d) − flow(d); metrics on the cumulative clean-equity curve. */
+export function cleanMetrics(equity, ledger) {
+  if (!Array.isArray(equity) || equity.length < 3) return null;
+  const flowByDay = {};
+  for (const e of (ledger || [])) {
+    const d = new Date(e.t).toISOString().slice(0, 10);
+    flowByDay[d] = (flowByDay[d] || 0) + e.flow;
+  }
+  const curve = [{ t: Date.parse(equity[0].date), v: equity[0].eq }];
+  let cleanEq = equity[0].eq;
+  for (let i = 1; i < equity.length; i++) {
+    const dEq = equity[i].eq - equity[i - 1].eq;
+    const flow = flowByDay[equity[i].date] || 0;
+    cleanEq += dEq - flow;
+    curve.push({ t: Date.parse(equity[i].date), v: cleanEq });
+  }
+  const m = seriesRiskMetrics(curve) || {};
+  const sumFlow = (ledger || []).reduce((a, e) => a + e.flow, 0);
+  return { ...m, nDays: equity.length, cleanTotalPnl: +(cleanEq - equity[0].eq).toFixed(2), sumFlow: +sumFlow.toFixed(2), minCleanV: Math.min(...curve.map(p => p.v)) };
+}
